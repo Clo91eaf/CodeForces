@@ -1,23 +1,19 @@
 #include <bits/stdc++.h>
 
-bool check(std::string s) {
-  for (int i = 0; i < s.length() / 2; i++) {
-    if (s[i] != s[s.length() / 2 + i] && s[i] != '?' && s[s.length() / 2 + i] != '?') {
-      return false;
-    }
-  }
-  return true;
-}
-
 void solve() {
   std::string s;
   std::cin >> s;
 
-  for (int len = s.length() - s.length() % 2; len >= 0; len -= 2) {
-    for (int i = 0; i <= s.length() - len; i++) {
-      std::string t = s.substr(i, len);
-      if (check(t)) {
-        std::cout << len << "\n";
+  for (int len = s.length() / 2; len > 0; len--) {
+    int cnt = 0;
+    for (int i = 0, j = len; j < s.length(); i++, j++) {
+      if (s[i] != s[j] && s[i] != '?' && s[j] != '?') {
+        cnt = 0;
+      } else {
+        cnt++;
+      }
+      if (cnt >= len) {
+        std::cout << len * 2 << "\n";
         return;
       }
     }
