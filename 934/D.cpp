@@ -1,66 +1,42 @@
-// #include <bits/stdc++.h>
-// using namespace std;
+#include <bits/stdc++.h>
+using namespace std;
 
-// const int MAXN = 2e5 + 5;
+#define i64 long long
+const i64 MAXN = 2e5 + 7;
 
-// tuple<int, int, int> p[MAXN];
-// int ans[MAXN];
+i64 a[MAXN];
+i64 b[MAXN];
 
-// int f(string s, int l, int r) {
-//   int n = s.length();
-//   int f_sum = 0;
-//   for (int k = 2; k <= n; k++) {
-//     for (int i = 0; i <= n - k; i++) {
-//       int j = i + k - 1;
-//       if (l - 1 <= i && j <= r - 1) {
-//         string sub = s.substr(i, k);
-//         bool is_palindrome = true;
-//         for (int x = 0; x < k / 2; x++) {
-//           if (sub[x] != sub[k - x - 1]) {
-//             is_palindrome = false;
-//             break;
-//           }
-//         }
-//         if (!is_palindrome) {
-//           f_sum += k;
-//         }
-//       }
-//     }
-//   }
-//   return f_sum;
-// }
+void solve() {
+  i64 m, n;
+  cin >> n >> m;
 
-// void solve() {
-//   int n, q;
-//   cin >> n >> q;
-//   string s;
-//   cin >> s;
-//   for (int i = 0; i < q; i++) {
-//     int a, b;
-//     cin >> a >> b;
-//     p[i] = make_tuple(a, b, i);
-//   }
-//   sort(p, p + q);
-//   for (int i = 0; i < q; i++) {
-//     int l = get<0>(p[i]);
-//     int r = get<1>(p[i]);
-//     if (i == 0) ans[get<2>(p[i])] = f(s, l, r);
-//     else {
-//       int prev_l = get<0>(p[i - 1]);
-//       int prev_r = get<1>(p[i - 1]);
-//       for (int j = pre; j <= prev_r; j++) {
-//         ans[get<2>(p[i])] = ans[get<2>(p[i - 1])];
-//         break;
-//       }
-//     }
+  for (i64 i = 0; i < n; i++) {
+    cin >> a[i];
+  }
 
-//   }
-// }
+  for (i64 i = 0; i < n; i++) {
+    cin >> b[i];
+  }
 
-// int main() {
-//   int t;
-//   cin >> t;
-//   while (t--) {
-//     solve();
-//   }
-// }
+  i64 sum = 0;
+  for (i64 i = n - 1; i >= m; i--)
+    sum += a[i] < b[i] ? a[i] : b[i];
+  i64 mn = 1e9 + 7;
+  i64 sumb = 0;
+  for (int i = m - 1; i >= 0; i--) {
+    mn = min(mn, a[i] + sumb);
+    sumb += b[i];
+  }
+  cout << sum + mn << endl;
+}
+
+int main() {
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(nullptr);
+  i64 t;
+  cin >> t;
+  while (t--) {
+    solve();
+  }
+}
