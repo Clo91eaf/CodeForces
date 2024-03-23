@@ -1,0 +1,16 @@
+bool check(int x) {
+  if (x > 4) return true;
+}
+
+int BinarySearch(int n) {
+  int low = 1, high = n;
+  while (high - low > 1) {
+    int mid = (low + high) / 2;
+    if (check(mid)) {
+      low = mid;
+    } else {
+      high = mid;
+    }
+  }
+  return low;
+}
