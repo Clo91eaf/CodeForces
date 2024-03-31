@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve() {
-}
+void solve() {}
 
 int main() {
   std::ios::sync_with_stdio(false);

@@ -2,6 +2,11 @@
 using namespace std;
 
 void solve() {
+  int n, q;
+  cin >> n >> q;
+
+  string s;
+  cin >> s;
 }
 
 int main() {
