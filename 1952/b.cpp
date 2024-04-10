@@ -2,6 +2,15 @@
 using namespace std;
 
 void solve() {
+  string s;
+  cin >> s;
+  for (int i = 0; i < s.length() - 1; i++) {
+    if (s[i] == 'i' && s[i + 1] == 't') {
+      cout << "YES\n";
+      return;
+    }
+  }
+  cout << "NO\n";
 }
 
 int main() {
